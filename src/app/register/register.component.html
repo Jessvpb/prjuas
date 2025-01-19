@@ -1,0 +1,227 @@
+<div class="bg-gradient-primary">
+  <div id="layoutAuthentication">
+    <div id="layoutAuthentication_content">
+      <main>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+              <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                  <!-- Nested Row within Card Body -->
+                  <div class="row">
+                    <div
+                      class="col-lg-5 d-none d-lg-block bg-register-image"
+                    ></div>
+                    <div class="col-lg-7">
+                      <div class="p-5">
+                        <div class="text-center">
+                          <h1 class="h4 text-gray-900 mb-4">
+                            Create an Account!
+                          </h1>
+                        </div>
+                        <form
+                          class="user"
+                          [formGroup]="registerForm"
+                          (ngSubmit)="onSubmit(registerForm)"
+                        >
+                          <div class="form-group">
+                            <label for="inputEmail">Email address</label>
+                            <input
+                              type="email"
+                              class="form-control form-control-user"
+                              id="exampleInputEmail"
+                              placeholder="name@example.com"
+                              formControlName="email"
+                              autocomplete="on"
+                              [ngClass]="
+                                registerForm.get('email')?.invalid && submitted
+                                  ? 'is-invalid'
+                                  : ''
+                              "
+                            />
+                            <div
+                              *ngIf="
+                                registerForm.get('email')?.invalid && submitted
+                              "
+                            >
+                              <small
+                                class="text-danger"
+                                *ngIf="registerForm.get('email')?.errors?.['required']"
+                              >
+                                Email harus diisi !
+                              </small>
+
+                              <small
+                                class="text-danger"
+                                *ngIf="registerForm.get('email')?.errors?.['email']"
+                              >
+                                Email tidak valid !
+                              </small>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                              <label for="inputPasswordConfirm">Password</label>
+                              <input
+                                type="password"
+                                class="form-control form-control-user"
+                                id="exampleInputPassword"
+                                placeholder="Create a password"
+                                formControlName="password"
+                                autocomplete="on"
+                                [ngClass]="
+                                  registerForm.get('password')?.invalid &&
+                                  submitted
+                                    ? 'is-invalid'
+                                    : ''
+                                "
+                              />
+                              <div
+                                *ngIf="
+                                  registerForm.get('password')?.invalid &&
+                                  submitted
+                                "
+                              >
+                                <small
+                                  class="text-danger"
+                                  *ngIf="registerForm.get('password')?.errors?.['required']"
+                                >
+                                  Password harus diisi !
+                                </small>
+
+                                <small
+                                  class="text-danger"
+                                  *ngIf="registerForm.get('password')?.errors?.['minlength']"
+                                >
+                                  Password minimal 8 karakter !
+                                </small>
+                              </div>
+                            </div>
+                            <div class="col-sm-6">
+                              <label for="inputPasswordConfirm"
+                                >Confirm Password</label
+                              >
+                              <input
+                                type="password"
+                                class="form-control form-control-user"
+                                id="exampleRepeatPassword"
+                                placeholder="Confirm password"
+                                autocomplete="on"
+                                [ngClass]="
+                                  registerForm.get('confirmPassword')
+                                    ?.invalid && submitted
+                                    ? 'is-invalid'
+                                    : ''
+                                "
+                                formControlName="confirmPassword"
+                              />
+                              <div
+                                *ngIf="
+                                  registerForm.get('confirmPassword')
+                                    ?.invalid && submitted
+                                "
+                              >
+                                <small
+                                  class="text-danger"
+                                  *ngIf="registerForm.get('confirmPassword')?.errors?.['required']"
+                                >
+                                  Konfirmasi Password harus diisi !
+                                  <br />
+                                </small>
+
+                                <small
+                                  class="text-danger"
+                                  *ngIf="registerForm.get('confirmPassword')?.errors?.['minlength']"
+                                >
+                                  Password minimal 8 karakter !
+                                  <br />
+                                </small>
+                                <small
+                                  class="text-danger"
+                                  *ngIf="registerForm.get('confirmPassword')?.errors?.['notMatch']
+                                "
+                                >
+                                  Password dan Konfirmasi tidak sama !
+                                </small>
+                              </div>
+                            </div>
+                          </div>
+                          <button
+                            type="submit"
+                            class="btn btn-primary btn-user btn-block"
+                          >
+                            Create Account
+                          </button>
+                          <hr />
+                          <a
+                            href="index.html"
+                            class="btn btn-google btn-user btn-block"
+                          >
+                            <i class="fab fa-google fa-fw"></i> Register with
+                            Google
+                          </a>
+                          <a
+                            href="index.html"
+                            class="btn btn-facebook btn-user btn-block"
+                          >
+                            <i class="fab fa-facebook-f fa-fw"></i> Register
+                            with Facebook
+                          </a>
+                        </form>
+                        <hr />
+                        <div class="card-footer text-center py-3">
+                          <div
+                            *ngIf="showSpinner"
+                            class="spinner-border text-primary"
+                            role="status"
+                          >
+                            <span class="visually-hidden">Loading...</span>
+                          </div>
+
+                          <div
+                            *ngIf="executeState != ''"
+                            class="text-success fw-bolder fs-4"
+                          >
+                            {{ executeState }}
+                          </div>
+                          <div class="text-center">
+                            <a class="small" href="/login"
+                              >Already have an account? Login!</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div id="layoutAuthentication_footer">
+      <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+          <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+            <div>
+              <a href="#">Privacy Policy</a>
+              &middot;
+              <a href="#">Terms &amp; Conditions</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+  </div>
+</div>

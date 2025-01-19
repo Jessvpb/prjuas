@@ -1,0 +1,135 @@
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">KATEGORI</h1>
+  </div>
+  <!-- Content Row -->
+  <ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Data Kategori</li>
+  </ol>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <form class="m-4" (submit)="simpanKategori(kategoriForm)" #kategoriForm="ngForm">
+          <div class="mb-3">
+            <!-- <label for="id" class="form-label">ID</label>
+              <input
+                type="hidden"
+                class="form-control"
+                id="id"
+                ngModel
+                name="id"
+                #id="ngModel"
+              />
+            </div> -->
+
+            <div class="mb-3">
+              <label for="kdCategory" class="form-label">Kode Kategori</label>
+              <input
+                type="text"
+                [ngClass]="
+                  kdCategory.invalid && kategoriForm.submitted ? 'is-invalid' : ''
+                "
+                class="form-control"
+                id="kdCategory"
+                ngModel
+                name="kdCategory"
+                #kdCategory="ngModel"
+                required
+              />
+
+              <div
+                *ngIf="kdCategory.invalid && kategoriForm.submitted"
+                class="invalid-feedback"
+              >
+                Kode Kategori harus diisi
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="namaC" class="form-label">Nama Kategori</label>
+              <input
+                type="text"
+                class="form-control"
+                id="namaC"
+                ngModel
+                name="namaC"
+                #namaC="ngModel"
+                required
+              />
+
+              <div
+                *ngIf="namaC.invalid && kategoriForm.submitted"
+                class="invalid-feedback"
+              >
+                Nama Kategori harus diisi
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">{{ mode }}</button>
+          &nbsp;
+          <button (click)="onReset()" type="reset" class="btn btn-danger">
+            Reset
+          </button>
+        </form>
+
+        <div
+          *ngIf="messageExecute != ''"
+          class="bg-success m-4 p-2 text-dark bg-opacity-25"
+        >
+          <h6>{{ messageExecute }}</h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header">
+          <i class="fas fa-table me-1"></i>
+          Data Kategori
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Kode Kategori</th>
+                <th>Nama Kategori</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody *ngIf="kategoriList.length > 0">
+              <tr
+                *ngFor="
+                  let kategori of kategoriList
+                    | paginate : { itemsPerPage: 5, currentPage: p }
+                "
+              >
+                <td>{{ kategori.kdCategory }}</td>
+                <td>{{ kategori.namaC }}</td>
+                <td>
+                  <button
+                    (click)="tampilData(kategori, kategoriForm)"
+                    class="btn btn-outline-primary btn-sm"
+                  >
+                    EDIT
+                  </button>
+                </td>
+                <td>
+                  <button
+                    (click)="hapusKategori(kategori)"
+                    class="btn btn-outline-danger btn-sm"
+                  >
+                    DELETE
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
