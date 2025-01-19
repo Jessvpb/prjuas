@@ -1,0 +1,11 @@
+{
+  "routes": {
+    "/": {},
+    "/admin": {},
+    "/admin/brands": {},
+    "/admin/categories": {},
+    "/admin/products": {},
+    "/login": {},
+    "/register": {}
+  }
+}
