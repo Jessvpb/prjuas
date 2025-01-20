@@ -3,15 +3,19 @@
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">KATEGORI</h1>
   </div>
-  <!-- Content Row -->
+  <!-- Content Row
   <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">Data Kategori</li>
-  </ol>
+  </ol> -->
 
   <div class="row">
     <div class="col-md-6">
       <div class="card mb-4">
-        <form class="m-4" (submit)="simpanKategori(kategoriForm)" #kategoriForm="ngForm">
+        <form
+          class="m-4"
+          (submit)="simpanKategori(kategoriForm)"
+          #kategoriForm="ngForm"
+        >
           <div class="mb-3">
             <!-- <label for="id" class="form-label">ID</label>
               <input
@@ -29,7 +33,9 @@
               <input
                 type="text"
                 [ngClass]="
-                  kdCategory.invalid && kategoriForm.submitted ? 'is-invalid' : ''
+                  kdCategory.invalid && kategoriForm.submitted
+                    ? 'is-invalid'
+                    : ''
                 "
                 class="form-control"
                 id="kdCategory"
@@ -82,8 +88,14 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="col-md-6">
+  <br />
+  <ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">List Brand</li>
+  </ol>
+  <div class="row">
+    <div class="col-md-12">
       <div class="card mb-4">
         <div class="card-header">
           <i class="fas fa-table me-1"></i>
