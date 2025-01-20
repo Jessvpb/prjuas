@@ -4,6 +4,7 @@
   <ul
     class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
     id="accordionSidebar"
+    style="position: fixed; height: 100vh; width: 250px; top: 0; left: 0"
   >
     <!-- Sidebar - Brand -->
     <a
@@ -20,41 +21,99 @@
     <hr class="sidebar-divider my-0" />
 
     <!-- Nav Item - Product -->
-    <li class="nav-item active">
-      <a class="nav-link" href="/admin/products">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Produk</span></a
+    <div
+      class="sidebar"
+      style="
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        padding-left: 10px;
+      "
+    >
+      <ul
+        class="nav flex-column"
+        style="flex-grow: 1; list-style: none; padding-left: 0; margin: 0"
       >
-    </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="/admin/products"
+            style="display: flex; align-items: center; font-size: 1.2rem"
+          >
+            <i
+              class="fas fa-cube fa-tachometer-alt"
+              style="margin-right: 15px; font-size: 1.5rem"
+            ></i>
+            <span>Produk</span>
+          </a>
+        </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider" />
+        <!-- Divider -->
+        <hr class="sidebar-divider" style="margin: 0" />
 
-    <!-- Heading -->
-    <div class="sidebar-heading">Addons</div>
+        <!-- Heading -->
+        <div class="sidebar-heading" style="font-size: 1.2rem; margin: 20px 0">
+          Addons
+        </div>
 
-    <!-- Nav Item - Kategori -->
-    <li class="nav-item">
-      <a class="nav-link" href="/admin/categories">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>Kategori</span></a
-      >
-    </li>
+        <!-- Nav Item - Kategori -->
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="/admin/categories"
+            style="display: flex; align-items: center; font-size: 1.2rem"
+          >
+            <i
+              class="fas fa-list fa-chart-area"
+              style="margin-right: 15px; font-size: 1.5rem"
+            ></i>
+            <span>Kategori</span>
+          </a>
+        </li>
 
-    <!-- Nav Item - Brand -->
-    <li class="nav-item">
-      <a class="nav-link" href="/admin/brands">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Brand</span></a
-      >
-    </li>
+        <!-- Nav Item - Brand -->
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="/admin/brands"
+            style="display: flex; align-items: center; font-size: 1.2rem"
+          >
+            <i
+              class="fas fa-registered fa-table"
+              style="margin-right: 15px; font-size: 1.5rem"
+            ></i>
+            <span>Brand</span>
+          </a>
+        </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider" />
-    <!-- Nav Item - Log Out -->
-    <li class="nav-item" (click)="logout()">
-      <a class="nav-link" href="#!"> <span>Log Out</span></a>
-    </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider" style="margin: 0" />
+        <hr class="sidebar-divider" style="margin: 0" />
+        <hr class="sidebar-divider" style="margin: 0" />
+        <hr class="sidebar-divider" style="margin: 0" />
+
+        <!-- Nav Item - Log Out -->
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#!"
+            (click)="logout()"
+            style="display: flex; align-items: center; font-size: 1.2rem"
+          >
+            <i
+              class="fas fa-sign-out-alt"
+              style="margin-right: 15px; font-size: 1.5rem"
+            ></i>
+            <span>Log Out</span>
+          </a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider" style="margin: 0" />
+        <hr class="sidebar-divider" style="margin: 0" />
+        <hr class="sidebar-divider" style="margin: 0" />
+        <hr class="sidebar-divider" style="margin: 0" />
+      </ul>
+    </div>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block" />
@@ -62,7 +121,11 @@
   <!-- End of Sidebar -->
 
   <!-- Content Wrapper -->
-  <div id="content-wrapper" class="d-flex flex-column">
+  <div
+    id="content-wrapper"
+    class="d-flex flex-column"
+    style="margin-left: 225px; flex-grow: 1"
+  >
     <!-- Main Content -->
     <div id="content">
       <!-- Topbar -->
@@ -101,17 +164,16 @@
           </li>
         </ul>
       </nav>
-    </div>
-    <div id="content">
+      <!-- End of Topbar -->
+
       <main>
         <router-outlet></router-outlet>
       </main>
-      <!-- End of Topbar -->
       <!-- Footer -->
 
       <!-- End of Footer -->
-      <!-- End of Content Wrapper -->
     </div>
+
     <footer class="sticky-footer bg-white">
       <div class="container my-auto">
         <div class="copyright text-center my-auto">
@@ -119,11 +181,6 @@
         </div>
       </div>
     </footer>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
   </div>
 </div>
+<!-- End of Page Wrapper -->

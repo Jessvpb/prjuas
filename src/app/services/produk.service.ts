@@ -18,6 +18,29 @@ export class ProdukService {
 
   constructor(private http: HttpClient) {}
 
+  // Tambahkan method untuk mengambil jumlah produk
+  getProdukCount(): Observable<number> {
+    return this.http
+      .get<{ message: string; products: Produk[] }>(this.url)
+      .pipe(map((response) => response.products.length)); // Menghitung jumlah produk
+  }
+
+  // Tambahkan method untuk mengambil jumlah kategori
+  getCategoriesCount(): Observable<number> {
+    return this.http
+      .get<{ message: string; categories: Kategori[] }>(
+        environment.api + "categories/"
+      )
+      .pipe(map((response) => response.categories.length)); // Menghitung jumlah kategori
+  }
+
+  // Tambahkan method untuk mengambil jumlah brand
+  getBrandsCount(): Observable<number> {
+    return this.http
+      .get<{ message: string; brands: Brand[] }>(environment.api + "brands/")
+      .pipe(map((response) => response.brands.length)); // Menghitung jumlah brand
+  }
+
   getBrands(): Observable<Brand[]> {
     return this.http
       .get<{ message: string; brands: Brand[] }>(environment.api + "brands/")
@@ -79,7 +102,10 @@ export class ProdukService {
     this.http
       .post<{ message: string; kdProduct: string }>(this.url, produk)
       .subscribe((response) => {
-        console.log("Produk berhasil ditambahkan, kdProduct:", response.kdProduct);
+        console.log(
+          "Produk berhasil ditambahkan, kdProduct:",
+          response.kdProduct
+        );
         this.getProduk();
         this.subjectExecute.next(response.message);
       });
