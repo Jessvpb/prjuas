@@ -1,5 +1,5 @@
-import { Brand } from './brand.model';
-import { Kategori } from './kategori.model';
+import { Brand } from "./brand.model";
+import { Kategori } from "./kategori.model";
 
 export interface Produk {
   kdProduct: string;
@@ -9,6 +9,4 @@ export interface Produk {
   deskripsi: string;
   harga: number;
   stok: number;
-  image_url: string;
-  creator: string;
 }

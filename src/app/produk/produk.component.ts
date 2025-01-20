@@ -21,6 +21,7 @@ export class ProdukComponent {
   messageExecute: string = "";
 
   mode: string = "Simpan";
+  lastInsertedKdProduct: string | null = null;
 
   //pagination
   p: number = 1;
@@ -47,12 +48,14 @@ export class ProdukComponent {
 
   getBrands(): void {
     this.produkService.getBrands().subscribe((data) => {
+      console.log("Brand List: ", data);
       this.brandList = data;
     });
   }
 
   getCategories(): void {
     this.produkService.getCategories().subscribe((data) => {
+      console.log("Kategori List: ", data);
       this.kategoriList = data;
     });
   }
@@ -64,13 +67,13 @@ export class ProdukComponent {
 
   tampilData(produk: Produk, form: NgForm) {
     form.setValue({
+      kdProduct: produk.kdProduct,
       kdBrand: produk.kdBrand,
       kdCategory: produk.kdCategory,
       namaP: produk.namaP,
       deskripsi: produk.deskripsi,
       harga: produk.harga,
       stok: produk.stok,
-      image_url: produk.image_url,
     });
 
     this.mode = "Perbaiki";
@@ -89,18 +92,17 @@ export class ProdukComponent {
         form.value.namaP,
         form.value.deskripsi,
         form.value.harga,
-        form.value.stok,
-        form.value.image_url
+        form.value.stok
       );
     } else {
       this.produkService.updateProduk(
+        form.value.kdProduct,
         form.value.kdBrand,
         form.value.kdCategory,
         form.value.namaP,
         form.value.deskripsi,
         form.value.harga,
-        form.value.stok,
-        form.value.image_url
+        form.value.stok
       );
     }
 
