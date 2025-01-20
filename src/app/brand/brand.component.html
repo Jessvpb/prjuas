@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-start justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">BRAND</h1>
+    <h1 class="h3 mb-0 text-gray-800" style="font-weight: bold">BRAND</h1>
   </div>
   <div class="row">
     <!-- Form Input -->
@@ -78,7 +78,7 @@
           Data Brand
         </div>
         <div class="card-body">
-          <table class="table">
+          <table class="table table-bordered">
             <thead>
               <tr>
                 <th>Kode Brand</th>
@@ -97,20 +97,24 @@
                 <td>{{ brand.kdBrand }}</td>
                 <td>{{ brand.namaB }}</td>
                 <td>
-                  <button
-                    (click)="tampilData(brand, brandForm)"
-                    class="btn btn-outline-primary btn-sm"
-                  >
-                    EDIT
-                  </button>
+                  <div style="display: flex; justify-content: center">
+                    <button
+                      (click)="tampilData(brand, brandForm)"
+                      class="btn btn-outline-primary btn-sm"
+                    >
+                      EDIT
+                    </button>
+                  </div>
                 </td>
                 <td>
-                  <button
-                    (click)="hapusBrand(brand)"
-                    class="btn btn-outline-danger btn-sm"
-                  >
-                    DELETE
-                  </button>
+                  <div style="display: flex; justify-content: center">
+                    <button
+                      (click)="hapusBrand(brand)"
+                      class="btn btn-outline-danger btn-sm"
+                    >
+                      DELETE
+                    </button>
+                  </div>
                 </td>
               </tr>
             </tbody>

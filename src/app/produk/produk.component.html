@@ -1,1 +1,252 @@
-<p>produk works!</p>
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800" style="font-weight: bold">PRODUK</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card mb-4">
+        <form
+          class="m-4"
+          (submit)="simpanProduk(produkForm)"
+          #produkForm="ngForm"
+        >
+          <div class="row">
+            <!-- Kolom Pertama -->
+            <div class="col-md-6">
+              <!-- Dropdown Kode Brand -->
+              <div class="mb-3">
+                <label for="kdBrand" class="form-label">Kode Brand</label>
+                <select
+                  class="form-control"
+                  id="kdBrand"
+                  ngModel
+                  name="kdBrand"
+                  #kdBrand="ngModel"
+                  required
+                  [ngClass]="
+                    kdBrand.invalid && produkForm.submitted ? 'is-invalid' : ''
+                  "
+                >
+                  <option value="" disabled selected>Pilih Brand</option>
+                  <option
+                    *ngFor="let brand of brandList"
+                    [value]="brand.kdBrand"
+                  >
+                    {{ brand.namaB }}
+                  </option>
+                </select>
+                <div
+                  *ngIf="kdBrand.invalid && produkForm.submitted"
+                  class="invalid-feedback"
+                >
+                  Kode Brand harus dipilih.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="namaP" class="form-label">Nama Produk</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="namaP"
+                  ngModel
+                  name="namaP"
+                  #namaP="ngModel"
+                  required
+                  [ngClass]="
+                    namaP.invalid && produkForm.submitted ? 'is-invalid' : ''
+                  "
+                />
+                <div
+                  *ngIf="namaP.invalid && produkForm.submitted"
+                  class="invalid-feedback"
+                >
+                  Nama Produk harus diisi.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="harga" class="form-label">Harga</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="harga"
+                  ngModel
+                  name="harga"
+                  #harga="ngModel"
+                  required
+                  [ngClass]="
+                    harga.invalid && produkForm.submitted ? 'is-invalid' : ''
+                  "
+                />
+                <div
+                  *ngIf="harga.invalid && produkForm.submitted"
+                  class="invalid-feedback"
+                >
+                  Harga harus diisi.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="stok" class="form-label">Stok</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="stok"
+                  ngModel
+                  name="stok"
+                  #stok="ngModel"
+                  required
+                  [ngClass]="
+                    stok.invalid && produkForm.submitted ? 'is-invalid' : ''
+                  "
+                />
+                <div
+                  *ngIf="stok.invalid && produkForm.submitted"
+                  class="invalid-feedback"
+                >
+                  Stok harus diisi.
+                </div>
+              </div>
+            </div>
+
+            <!-- Kolom Kedua -->
+            <div class="col-md-6">
+              <!-- Dropdown Kode Kategori -->
+              <div class="mb-3">
+                <label for="kdCategory" class="form-label">Kode Kategori</label>
+                <select
+                  class="form-control"
+                  id="kdCategory"
+                  ngModel
+                  name="kdCategory"
+                  #kdCategory="ngModel"
+                  required
+                  [ngClass]="
+                    kdCategory.invalid && produkForm.submitted
+                      ? 'is-invalid'
+                      : ''
+                  "
+                >
+                  <option value="" disabled selected>Pilih Kategori</option>
+                  <option
+                    *ngFor="let kategori of kategoriList"
+                    [value]="kategori.kdCategory"
+                  >
+                    {{ kategori.namaC }}
+                  </option>
+                </select>
+                <div
+                  *ngIf="kdCategory.invalid && produkForm.submitted"
+                  class="invalid-feedback"
+                >
+                  Kode Kategori harus dipilih.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="deskripsi" class="form-label">Deskripsi</label>
+                <textarea
+                  class="form-control"
+                  id="deskripsi"
+                  ngModel
+                  name="deskripsi"
+                  #deskripsi="ngModel"
+                  rows="7"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <!-- Tombol -->
+          <div class="d-flex justify-content-end" style="gap: 10px">
+            <button type="submit" class="btn btn-primary">
+              {{ mode }}
+            </button>
+            <button
+              (click)="onReset()"
+              type="reset"
+              class="btn btn-danger ms-3"
+            >
+              Reset
+            </button>
+          </div>
+        </form>
+
+        <div
+          *ngIf="messageExecute != ''"
+          class="bg-success m-4 p-2 text-dark bg-opacity-25"
+        >
+          <h6>{{ messageExecute }}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+
+  <ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">List Produk</li>
+  </ol>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card mb-4">
+        <div class="card-header">
+          <i class="fas fa-table me-1"></i>
+          Data Produk
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Kode Produk</th>
+                <th>Nama Produk</th>
+                <th>Deskripsi</th>
+                <th>Harga</th>
+                <th>Stok</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="produkList.length > 0; else noData">
+              <tr
+                *ngFor="
+                  let produk of produkList
+                    | paginate : { itemsPerPage: 5, currentPage: p }
+                "
+              >
+                <td>{{ produk.kdProduct }}</td>
+                <td>{{ produk.namaP }}</td>
+                <td>{{ produk.deskripsi }}</td>
+                <td>{{ produk.harga | currency : "Rp " }}</td>
+                <td>{{ produk.stok }}</td>
+                <td>
+                  <div class="d-flex justify-content-center gap-2">
+                    <button
+                      (click)="tampilData(produk, produkForm)"
+                      class="btn btn-outline-primary btn-sm"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      (click)="hapusProduk(produk)"
+                      class="btn btn-outline-danger btn-sm"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          <ng-template #noData>
+            <tr>
+              <td colspan="6" class="text-center">Tidak ada data produk</td>
+            </tr>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

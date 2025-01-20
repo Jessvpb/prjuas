@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">KATEGORI</h1>
+    <h1 class="h3 mb-0 text-gray-800" style="font-weight: bold">KATEGORI</h1>
   </div>
   <!-- Content Row
   <ol class="breadcrumb mb-4">
@@ -102,7 +102,7 @@
           Data Kategori
         </div>
         <div class="card-body">
-          <table class="table">
+          <table class="table table-bordered">
             <thead>
               <tr>
                 <th>Kode Kategori</th>
@@ -121,20 +121,24 @@
                 <td>{{ kategori.kdCategory }}</td>
                 <td>{{ kategori.namaC }}</td>
                 <td>
-                  <button
-                    (click)="tampilData(kategori, kategoriForm)"
-                    class="btn btn-outline-primary btn-sm"
-                  >
-                    EDIT
-                  </button>
+                  <div style="display: flex; justify-content: center">
+                    <button
+                      (click)="tampilData(kategori, kategoriForm)"
+                      class="btn btn-outline-primary btn-sm"
+                    >
+                      EDIT
+                    </button>
+                  </div>
                 </td>
                 <td>
-                  <button
-                    (click)="hapusKategori(kategori)"
-                    class="btn btn-outline-danger btn-sm"
-                  >
-                    DELETE
-                  </button>
+                  <div style="display: flex; justify-content: center">
+                    <button
+                      (click)="hapusKategori(kategori)"
+                      class="btn btn-outline-danger btn-sm"
+                    >
+                      DELETE
+                    </button>
+                  </div>
                 </td>
               </tr>
             </tbody>
