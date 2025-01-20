@@ -1,29 +1,19 @@
 <div class="container-fluid">
   <!-- Page Heading -->
-  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <div class="d-sm-flex align-items-start justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">BRAND</h1>
   </div>
   <!-- Content Row -->
-  <ol class="breadcrumb mb-4">
+  <!-- <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">Data Brand</li>
-  </ol>
+  </ol> -->
 
   <div class="row">
+    <!-- Form Input -->
     <div class="col-md-6">
       <div class="card mb-4">
         <form class="m-4" (submit)="simpanBrand(brandForm)" #brandForm="ngForm">
           <div class="mb-3">
-            <!-- <label for="id" class="form-label">ID</label>
-            <input
-              type="hidden"
-              class="form-control"
-              id="id"
-              ngModel
-              name="id"
-              #id="ngModel"
-            />
-          </div> -->
-
             <div class="mb-3">
               <label for="kdBrand" class="form-label">Kode Brand</label>
               <input
@@ -38,7 +28,6 @@
                 #kdBrand="ngModel"
                 required
               />
-
               <div
                 *ngIf="kdBrand.invalid && brandForm.submitted"
                 class="invalid-feedback"
@@ -57,7 +46,6 @@
                 #namaB="ngModel"
                 required
               />
-
               <div
                 *ngIf="namaB.invalid && brandForm.submitted"
                 class="invalid-feedback"
@@ -66,14 +54,12 @@
               </div>
             </div>
           </div>
-
           <button type="submit" class="btn btn-primary">{{ mode }}</button>
           &nbsp;
           <button (click)="onReset()" type="reset" class="btn btn-danger">
             Reset
           </button>
         </form>
-
         <div
           *ngIf="messageExecute != ''"
           class="bg-success m-4 p-2 text-dark bg-opacity-25"
@@ -82,8 +68,15 @@
         </div>
       </div>
     </div>
-
-    <div class="col-md-6">
+  </div>
+  <!-- <hr style="border: 1px solid royalblue" /> -->
+  <br />
+  <ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">List Brand</li>
+  </ol>
+  <div class="row">
+    <!-- Table Data Brand -->
+    <div class="col-md-12">
       <div class="card mb-4">
         <div class="card-header">
           <i class="fas fa-table me-1"></i>

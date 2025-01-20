@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
-import { AuthService } from './services/auth.service';
+import { Component } from "@angular/core";
+import { AuthService } from "./services/auth.service";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: false,
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.css",
 })
 export class AppComponent {
-  title = 'prjJT';
+  title = "prjuas";
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService) {}
+
+  ngOnInit() {
     this.authService.autoAuthUser();
   }
 }
