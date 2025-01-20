@@ -109,11 +109,6 @@ export class ProdukService {
         this.getProduk();
         this.subjectExecute.next(response.message);
       });
-    this.http.post<ResponseAPI>(this.url, produk).subscribe((response) => {
-      this.getProduk();
-      this.subjectExecute.next(response.message);
-      //console.log(response.message)
-    });
   }
 
   deleteProduk(produk: Produk) {
@@ -127,8 +122,8 @@ export class ProdukService {
 
   updateProduk(
     kdProduct: string,
-    kdBrand: string,
     kdCategory: string,
+    kdBrand: string,
     namaP: string,
     deskripsi: string,
     harga: number,
@@ -136,8 +131,8 @@ export class ProdukService {
   ) {
     const produk: Produk = {
       kdProduct: kdProduct,
-      kdBrand: kdBrand,
       kdCategory: kdCategory,
+      kdBrand: kdBrand,
       namaP: namaP,
       deskripsi: deskripsi,
       harga: harga,

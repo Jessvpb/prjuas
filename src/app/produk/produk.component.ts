@@ -68,8 +68,8 @@ export class ProdukComponent {
   tampilData(produk: Produk, form: NgForm) {
     form.setValue({
       kdProduct: produk.kdProduct,
-      kdBrand: produk.kdBrand,
       kdCategory: produk.kdCategory,
+      kdBrand: produk.kdBrand,
       namaP: produk.namaP,
       deskripsi: produk.deskripsi,
       harga: produk.harga,
@@ -87,8 +87,8 @@ export class ProdukComponent {
   simpanProduk(form: NgForm) {
     if (this.mode.toUpperCase() === "SIMPAN") {
       this.produkService.addProduk(
-        form.value.kdBrand,
         form.value.kdCategory,
+        form.value.kdBrand,
         form.value.namaP,
         form.value.deskripsi,
         form.value.harga,
@@ -97,8 +97,8 @@ export class ProdukComponent {
     } else {
       this.produkService.updateProduk(
         form.value.kdProduct,
-        form.value.kdBrand,
         form.value.kdCategory,
+        form.value.kdBrand,
         form.value.namaP,
         form.value.deskripsi,
         form.value.harga,
